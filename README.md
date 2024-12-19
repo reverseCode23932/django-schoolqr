@@ -1,2 +1,2 @@
 # django-schoolqr
-This site is school
+This site is for school

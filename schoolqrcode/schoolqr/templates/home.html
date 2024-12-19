@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% block content %}
+    <div class="container">
+        <h2 class="text-center">מחשבים</h2>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>שם</th>
+                    <th>כיתה</th>
+                    <th>זמן</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in content %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.user_class }}</td>
+                        <td>{{ item.created }}</td>
+                        <td>
+                            <form method="post" action="delete/{{ item.get_url }}/">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">למחוק</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
